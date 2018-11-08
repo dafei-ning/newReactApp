@@ -13,12 +13,12 @@ class App extends Component {
     otherState: "some other value"
   };
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // console.log('was clicked!');
-    // Dont do this: this.state.persons[0].name = 'Geralt';
+    // Dont do this: this.state.persons[0].name = 'Geralt'; 识别不出
     this.setState({
       persons: [
-        { name: "Geralt", age: 28 },
+        { name: newName, age: 28 },
         { name: "Jennifer", age: 28 },
         { name: "JavaScript", age: 28 }
       ]
@@ -28,8 +28,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Hi This is a Demo!</h1>
-        <button onClick={this.switchNameHandler}>Swtich Name</button>
+        <h1>Hi This is a Demo!</h1> 
+        <button onClick={() => this.switchNameHandler('nui2')}>Swtich Name</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -37,6 +37,7 @@ class App extends Component {
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
+          click ={this.switchNameHandler.bind(this, 'hui')}
         >
           My hobbie is eat bianbian.
         </Person>
