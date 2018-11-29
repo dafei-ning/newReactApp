@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 //import logo from './logo.svg';
-import "./App.css";
-import Person from "./Components/Person";
+import Person from "./Person";
 
 class App extends Component {
   state = {
@@ -48,7 +47,7 @@ class App extends Component {
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
           click ={this.switchNameHandler.bind(this, 'hui')}
-          changed={this.nameChangedHandler} >My hobbie is eat bianbian.</Person>
+          changed={this.nameChangedHandler} >My hobbie is to eat bianbian.</Person>
         <Person
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
