@@ -35,10 +35,11 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App">
         <h1>Hi This is a Demo!</h1> 
-        <button onClick={() => this.switchNameHandler('nui2')}>Swtich Name</button>
+        <button className="SwitchButton" onClick={() => this.switchNameHandler('nui2')}>Swtich Name</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}

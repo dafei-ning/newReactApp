@@ -2,3 +2,10 @@
   text-align: center;
 }
 
+.SwitchButton {
+  background-color: white;
+  font: inherit;
+  border: 1px solid grey;
+  padding: 8px;
+  cursor: pointer;
+}
