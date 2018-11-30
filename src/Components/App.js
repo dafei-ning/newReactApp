@@ -9,10 +9,11 @@ class App extends Component {
       { name: "Echo", age: 28 },
       { name: "Java", age: 28 }
     ],
-    otherState: "some other value"
+    otherState: "some other value",
+    showPersons: false
   };
 
-  switchNameHandler = (newName) => {
+  switchNameHandler = newName => {
     // console.log('was clicked!');
     // Dont do this: this.state.persons[0].name = 'Geralt'; 识别不出
     this.setState({
@@ -24,7 +25,7 @@ class App extends Component {
     });
   };
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = event => {
     this.setState({
       persons: [
         { name: "Max", age: 28 },
@@ -32,27 +33,35 @@ class App extends Component {
         { name: "JavaScript", age: 28 }
       ]
     });
+  };
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
   }
 
   render() {
-
     return (
       <div className="App">
-        <h1>Hi This is a Demo!</h1> 
-        <button className="SwitchButton" onClick={() => this.switchNameHandler('nui2')}>Swtich Name</button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click ={this.switchNameHandler.bind(this, 'hui')}
-          changed={this.nameChangedHandler} >My hobbie is to eat bianbian.</Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        />
+        <h1>Hi This is a Demo!</h1>
+        <button className="SwitchButton"
+          onClick={this.togglePersonsHandler}>Swtich Name</button>
+        {
+          this.state.showPersons === true ?
+            <div >
+              <Person
+                name={this.state.persons[0].name}
+                age={this.state.persons[0].age} />
+              <Person
+                name={this.state.persons[1].name}
+                age={this.state.persons[1].age}
+                click={this.switchNameHandler.bind(this, "hui")}
+                changed={this.nameChangedHandler}>My hobbie is to eat bianbian.</Person>
+              <Person
+                name={this.state.persons[2].name}
+                age={this.state.persons[2].age} />
+            </div> : null
+        }
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'This is BaobaoHui!'));
